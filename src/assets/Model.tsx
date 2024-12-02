@@ -6,7 +6,7 @@ import { useGLTF } from '@react-three/drei/native'
 export default function Model(props) {
   const { nodes, materials } = useGLTF(require('./Model.glb'))
   return (
-    <group {...props} dispose={null} scale={1}>
+    <group {...props} dispose={null} scale={0.5}>
       <mesh
         castShadow
         receiveShadow
