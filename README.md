@@ -32,7 +32,9 @@ npm i
 
 ### Make sure to check above links for documentation and usage of the installed packages
 
-## Step 2: Run the Project in real device
+## Step 2: Run the Project in real device as it might not work properly with emulator
 ```
 npx react-native run-android
 ```
+
+## Branch 'deeplinking' is for learning deeplinking

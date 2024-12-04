@@ -1,24 +1,30 @@
 import { StyleSheet, Text, View } from 'react-native'
-import React, { Suspense } from 'react'
-import { Canvas } from '@react-three/fiber'
-import Model from './src/assets/Model'
-import useControls from 'r3f-native-orbitcontrols'
+import React from 'react'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { NavigationContainer } from '@react-navigation/native';
+import Home from './src/screens/Home';
+import Search from './src/screens/Search';
 
 const App = () => {
-  const [OrbitControls, events] = useControls()
+    const Stack=createNativeStackNavigator();
+    const linking={
+      prefixes:['https://blog-nine-ivory-54.vercel.app/app'],
+      config:{
+        screens:{
+          Search:'Search/:search'
+        }
+      }
+    }
   return (
-    <View style={{flex:1,backgroundColor:'ffffff'}}{...events}>
-      <Canvas>
-        <OrbitControls enablePan={true}></OrbitControls>
-        <directionalLight position={[0.5,1,10]} args={['#9e9e9e']}/>
-        <directionalLight position={[5,1,10]} args={['#9e9e9e']}/>
-        <directionalLight position={[3,1,10]} args={['#9e9e9e']}/>
-        <Suspense>
-          <Model/>
-        </Suspense>
-      </Canvas>
-    </View>
+    <NavigationContainer linking={linking}>
+      <Stack.Navigator>
+        <Stack.Screen name='Home' component={Home}/>
+        <Stack.Screen name='Search' component={Search}/>
+      </Stack.Navigator>
+    </NavigationContainer>
   )
 }
 
 export default App
+
+const styles = StyleSheet.create({})
